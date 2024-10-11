@@ -7,15 +7,6 @@
 ### Task Description 
 For this task, you can join with an RSS reader using **Python 3.10**.
 
-For the testing, you are going to isolate the parts you will work on. Namely, you are going to work only on the RSS (XML) scrapping part. Your task is to parse the RSS document and provide two formatted outputs: JSON and the standard output.
-
-
-You are going to:
-* Command line parsing.
-* Receive the XML document from the web.
-
-Because you can create your own style of formatting, it will be difficult to test you. So, we will provide you with the exact style for the format to ease the testing part.
-
 The format of the RSS feed that you are going to parse is [RSS 2.0](https://www.rssboard.org/rss-draft-1). You can follow the link to get a full understanding of the specification. But in this task, we are asking for the following requirements:
 ```html
 <channel>...</channel> <!-- Required tags are <title>, <link>, <description>  but we are asking you to be able to parse <title>, <link>, <description>, <category>, <language>, <lastBuildDate>, <managingEditor>, <pubDate>, <item> -->
@@ -136,9 +127,3 @@ You should have an indent to be equal to two spaces.
 > * Ensure that your app has no encoding issues (meaning symbols like &#39, etc.) when printing news to stdout in JSON format.
 > * The limit argument should also affect JSON generation.
 > *It is preferable to have different custom exceptions for different situations (if needed).
-
----
-Implementations will be checked with the latest CPython interpreter of the 3.10 branch.
----
-
-> Always code as if the guy who ends up maintaining your code will be a violent psychopath who knows where you live. Code for readability. **John F. Woods**
