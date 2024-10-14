@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Log In & Registration</title>
+</head>
+<body>
+    <div id="wrapper">
+        <h2 id="form-title">Log In</h2>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for message in messages %}
+                    <h3>{{ message }}</h3><br>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% endwith %}
+        
+        <!-- Toggle buttons for switching between forms -->
+        <div class="form-toggle">
+            <button id="login-btn" class="active">Log In</button>
+            <button id="register-btn">Register</button>
+        </div>
+
+        <!-- Login Form -->
+        <form id="login-form" method="post" action="/login">
+            <div class="input-group">
+                <label for="login-username">Username:</label>
+                <input type="text" id="login-username" name="username" placeholder="Enter your username" required>
+            </div>
+            
+            <div class="input-group">
+                <label for="login-password">Password:</label>
+                <input type="password" id="login-password" name="password" placeholder="Enter your password" required>
+            </div>
+            
+            <input type="submit" value="Log In" id="submit-login">
+        </form> 
+
+        <!-- Registration Form (hidden by default) -->
+        <form id="register-form" method="post" style="display: none;" action="/register">
+            <div class="input-group">
+                <label for="register-username">Username:</label>
+                <input type="text" id="register-username" name="username" placeholder="Create a username" required>
+            </div>
+
+            <div class="input-group">
+                <label for="register-email">Email:</label>
+                <input type="email" id="register-email" name="email" placeholder="Enter your email" required>
+            </div>
+
+            <div class="input-group">
+                <label for="register-password">Password:</label>
+                <input type="password" id="register-password" name="password" placeholder="Create a password" required>
+            </div>
+
+            <input type="submit" value="Register" id="submit-register">
+        </form>
+    </div>
+
+    <script>
+        // JavaScript for toggling between login and registration forms
+        const loginForm = document.getElementById('login-form');
+        const registerForm = document.getElementById('register-form');
+        const loginBtn = document.getElementById('login-btn');
+        const registerBtn = document.getElementById('register-btn');
+        const formTitle = document.getElementById('form-title');
+
+        // Show Login Form
+        loginBtn.addEventListener('click', () => {
+            loginForm.style.display = 'block';
+            registerForm.style.display = 'none';
+            formTitle.textContent = 'Log In';
+            loginBtn.classList.add('active');
+            registerBtn.classList.remove('active');
+        });
+
+        // Show Registration Form
+        registerBtn.addEventListener('click', () => {
+            loginForm.style.display = 'none';
+            registerForm.style.display = 'block';
+            formTitle.textContent = 'Register';
+            registerBtn.classList.add('active');
+            loginBtn.classList.remove('active');
+        });
+    </script>
+</body>
+</html>
